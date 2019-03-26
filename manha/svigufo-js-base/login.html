@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Svigufo - Eventos públicos e privados</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="./assets/css/login.css" />
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <section class="container flex">
+      <div class="img__login"><div class="img__overlay"></div></div>
+
+      <div class="item__login">
+        <div class="row">
+          <div class="item">
+            <img src="./assets/img/icon-login.png" class="icone__login" />
+          </div>
+          <div class="item" id="item__title">
+            <p class="text__login" id="item__description">
+              Bem-vindo! Faça login para acessar sua conta.
+            </p>
+          </div>
+          <form>
+            <div class="item">
+              <input
+                class="input__login"
+                placeholder="username"
+                type="text"
+                name="username"
+                id="login__email"
+              />
+            </div>
+            <div class="item">
+              <input
+                class="input__login"
+                placeholder="password"
+                type="password"
+                name="password"
+                id="login__password"
+              />
+            </div>
+            <div class="item">
+              <!-- <button class="btn btn__login" id="btn__login" onclick="minhaPrimeiraFuncao()"> -->
+              <button class="btn btn__login" id="btn__login">
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script>
+      //Pega todas as informações do documento
+      //console.log(document)
+
+      //Pega as informações do Id
+      // console.log(document.getElementById("login__email"));
+      // console.log(document.querySelector("#login__email"));
+      // console.log(document.querySelector(".input__login"));
+
+      // function minhaPrimeiraFuncao() {}
+
+      // a referência do botão
+      // var btnLogin = document.querySelector("#btn__login");
+      // // buscando a referência do input
+      // var inputLogin = document.querySelector("#login__email");
+
+      // adiciono um evento ao meu botão
+      // btnLogin.addEventListener("click", function(event) {
+      //   // evito o comportamento padrão da minha página.
+      //   event.preventDefault();
+      //   console.log(inputLogin);
+      //   console.log(inputLogin.value);
+
+      //   if (inputLogin.value == "admin@admin.com") {
+      //     console.log("200");
+      //   } else {
+      //     console.log("artur - 404 not found");
+      //   }
+      // });
+
+      var inputSenha = document.querySelector("#login__password");
+
+      inputSenha.addEventListener("keyup", function() {
+        if (inputSenha.value.length < 6) {
+          inputSenha.style.borderBottomColor = "red";
+        } else {
+          inputSenha.style.borderBottomColor = "#e6e6e6";
+        }
+      });
+
+    </script>
+  </body>
+</html>

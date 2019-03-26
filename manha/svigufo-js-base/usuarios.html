@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Svigufo - Eventos públicos e privados</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="./assets/css/flexbox.css" />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <header class="cabecalhoPrincipal">
+        <div class="container">
+            <img src="./assets/img/icon-login.png" />
+
+            <nav class="cabecalhoPrincipal-nav">
+                Administrador
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteudoPrincipal">
+        <section class="conteudoPrincipal-cadastro">
+            <h1 class="conteudoPrincipal-cadastro-titulo">Usuários</h1>
+            <div class="container" id="conteudoPrincipal-lista">
+
+                <table id="tabela-lista">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Permissão</th>
+                            <th>UF</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Usuário A</td>
+                            <td>a@a.a</td>
+                            <td>ADMINISTRADOR</td>
+                            <td>SP</td>
+                            <td>Editar/Excluir</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Usuário B</td>
+                            <td>b@b.b</td>
+                            <td>COMUM</td>
+                            <td>SP</td>
+                            <td>Editar/Excluir</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Usuário C</td>
+                            <td>c@c.c</td>
+                            <td>ADMINISTRADOR</td>
+                            <td>SP</td>
+                            <td>Editar/Excluir</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Usuário D</td>
+                            <td>d@d.d</td>
+                            <td>ADMINISTRADOR</td>
+                            <td>SP</td>
+                            <td>Editar/Excluir</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                <div class="paginacao">
+                    <a href="#">&laquo;</a>
+                    <a href="#">1</a>
+                    <a class="active" href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">&raquo;</a>
+                </div>
+
+            </div>
+
+            <div class="container" id="conteudoPrincipal-cadastro">
+                <h2 class="conteudoPrincipal-cadastro-titulo">Cadastrar Usuário</h2>
+                <div class="container">
+
+                    <input type="text" placeholder="nome do usuário">
+                    <input type="text" placeholder="e-mail">
+                    <select>
+                        <option value="0" disabled>Permissão</option>
+                        <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                        <option value="COMUM">COMUM</option>
+                    </select>
+                    <input type="text" placeholder="data de nascimento">
+                    <input type="text" placeholder="logradouro">
+                    <input type="text" placeholder="cidade">
+                    <input type="text" placeholder="estado">
+
+                </div>
+                <button class="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro">Cadastrar</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodapePrincipal">
+        <section class="rodapePrincipal-patrocinadores">
+            <div class="container">
+                <p>Escola SENAI de Informática - 2019</p>
+            </div>
+        </section>
+    </footer>
+
+    <script src="https://use.fontawesome.com/6597eb2fde.js"></script>
+</body>
+
+</html>
