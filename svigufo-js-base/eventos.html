@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Svigufo - Eventos públicos e privados</title>
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./assets/css/flexbox.css" />
+  <link rel="stylesheet" href="./assets/css/reset.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+</head>
+
+<body>
+  <header class="cabecalhoPrincipal">
+    <div class="container">
+      <img src="./assets/img/icon-login.png" />
+
+      <nav class="cabecalhoPrincipal-nav">
+        Administrador
+      </nav>
+    </div>
+  </header>
+
+  <main class="conteudoPrincipal">
+    <section class="conteudoPrincipal-cadastro">
+      <h1 class="conteudoPrincipal-cadastro-titulo">Eventos</h1>
+      <div class="container" id="conteudoPrincipal-lista">
+
+        <table id="tabela-lista">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Evento</th>
+              <th>Data</th>
+              <th>Acesso Livre</th>
+              <th>Tipo do Evento</th>
+            </tr>
+          </thead>
+
+          <tbody id="tabela-lista-corpo"></tbody>
+        </table>
+
+      </div>
+
+      <div class="container" id="conteudoPrincipal-cadastro">
+        <h2 class="conteudoPrincipal-cadastro-titulo">Cadastrar Evento</h2>
+        <div class="container">
+
+          <input type="text" id="evento__titulo" placeholder="título do evento">
+          <input type="text" id="evento__data" placeholder="dd/MM/yyyy">
+          <select id="option__acessolivre">
+            <option value="1">Livre</option>
+            <option value="0">Restrito</option>
+          </select>
+          <select id="option__tipoevento">
+            <option value="0" disabled>Tipo do Evento</option>
+          </select>
+          <textarea rows="3" cols="50" placeholder="descrição do evento" id="evento__descricao"></textarea>
+
+        </div>
+        <button class="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro"
+          onclick="cadastrarEvento()">Cadastrar</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodapePrincipal">
+    <section class="rodapePrincipal-patrocinadores">
+      <div class="container">
+        <p>Escola SENAI de Informática - 2019</p>
+      </div>
+    </section>
+  </footer>
+
+</body>
+
+</html>
