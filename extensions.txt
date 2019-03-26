@@ -1,0 +1,7 @@
+themes - agila / atom one dark / one monokai
+beautify
+bracket pair colorizer
+html css support
+intellisense
+prettier
+rainbow brackets
