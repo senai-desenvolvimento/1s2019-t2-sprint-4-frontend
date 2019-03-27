@@ -17,16 +17,15 @@
     </form>
 
     <script>
-        // getElementById("notaum");  
-        // querySelector(".classe");
-
-        var btn = document.querySelector("#btnCalcular");
-        var notaum = document.querySelector("#notaum");
-        var notadois = document.querySelector("#notadois");
-        btn.addEventListener("click", function(event) {
-            event.preventDefault();
-            console.log(parseFloat(parseFloat(notaum.value) + parseFloat(notadois.value))/2);
-        })
+      var inputNotaUm = document.querySelector("#notaum");
+      var inputNotaDois = document.querySelector("#notadois");
+      var btnCalcular = document.querySelector("#btnCalcular");
+      
+      btnCalcular.addEventListener("click",function(event){
+          event.preventDefault();
+          var media = (parseFloat(inputNotaUm.value) + parseFloat(inputNotaDois.value))/2;
+          console.log(media);
+      })
     </script>
 
 </body>

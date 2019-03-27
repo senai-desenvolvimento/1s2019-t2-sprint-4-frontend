@@ -29,26 +29,22 @@
     </div>
 
     <script>
-        let newsInput = document.getElementById("newsInputEmail");
-        let newsButton = document.getElementById("news__button");
+        // #E6E6E6
+        var email = document.querySelector("#newsInputEmail");
+        var botao = document.querySelector("#news__button");
 
-        newsInput.addEventListener("keyup", function() {
-            if (newsInput.value.length < 6) {
-                newsButton.disabled = true;
-                newsButton.style.background = "red";
-                console.log('falso');
-            }
-            else {
-                newsButton.disabled = false;
-                newsButton.style.background = "#ECDDF3";
-                console.log('sucesso');
+        email.addEventListener("keyup", function() {
+            if (email.value.length >= 5 && email.value.includes("@") && email.value.includes(".")) {
+                botao.style.backgroundColor = "green";
+                botao.disabled = false;
+            } else {
+                botao.style.backgroundColor = "red";
+                botao.disabled = true;
             }
         });
 
-        newsButton.addEventListener("click", function(event) {
-            event.preventDefault();
-            console.log("Sucesso");
-        });
+
+     
     </script>
 
     
