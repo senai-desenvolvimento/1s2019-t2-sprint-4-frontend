@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Notas</title>
+</head>
+
+<body>
+
+    <form id="formnotas">
+        <input type="text" required name="notaum" id="notaum">
+        <input type="text" name="notadois" id="notadois" required>
+        <button type="submit" id="btnCalcular">Calcular</button>
+    </form>
+
+    <script>
+        // getElementById("notaum");  
+        // querySelector(".classe");
+
+        var btn = document.querySelector("#btnCalcular");
+        var notaum = document.querySelector("#notaum");
+        var notadois = document.querySelector("#notadois");
+        btn.addEventListener("click", function(event) {
+            event.preventDefault();
+            console.log(parseFloat(parseFloat(notaum.value) + parseFloat(notadois.value))/2);
+        })
+    </script>
+
+</body>
+
+</html>
