@@ -55,10 +55,38 @@
         </div>
       </div>
     </section>
+
     <script>
-      // alert("Hello World!");
-      //console.log(document);
-      
+      // console.log(document);
+      // id
+      // console.log(document.getElementById("login__email"));
+      // classe
+      // console.log(document.getElementsByClassName("input__login"));
+
+      // var a = 10;
+      // var b = "Texto";
+
+      // // buscar a referencia do botao
+      // var btnLogin = document.querySelector("#btn__login");
+
+      // btnLogin.addEventListener("click", function(event) {
+      //   event.preventDefault();
+      //   // console.log("Hello World!");
+      //   console.log(document.querySelector("#login__email").value);
+      // });
+
+      var inputSenha = document.querySelector("#login__password");
+
+      inputSenha.addEventListener("keyup", function() {
+        // caso a senha tenha menos do que 6 caracteres, fica vermelho, querido
+        if (inputSenha.value.length < 6) {
+          inputSenha.style.borderBottomColor = "red";
+        } else {
+          inputSenha.style.borderBottomColor = "green";
+        }
+      });
+
     </script>
+
   </body>
 </html>
