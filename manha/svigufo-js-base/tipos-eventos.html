@@ -81,5 +81,85 @@
         </section>
       </footer>
     </div>
+
+    <script>
+      // array
+      // let tiposEventos = ["Evento A", "Evento C", "Evento B"];
+      // console.log(tiposEventos[1]);
+      // console.log(tiposEventos.length);
+
+      // for (let indice = 0; indice < tiposEventos.length; indice++) {
+      //   console.log(tiposEventos[indice]);
+      // }
+
+      // tiposEventos.forEach(element => {
+      //   console.log(element);
+      // });
+
+      // tiposEventos.push("Evento D");
+      // console.log(tiposEventos);
+
+      // tiposEventos.pop();
+      // console.log(tiposEventos);
+
+      // console.log(tiposEventos);
+      // // junção
+      // console.log(tiposEventos.join(" - "));
+      // // ordenação
+      // console.log(tiposEventos.sort());
+      // // a - b - c -> c - b - a      |          a - c - b ->  b - c - a      
+      // console.log(tiposEventos.reverse());
+      // console.log(tiposEventos.sort().reverse().join(" * "));
+
+      // map
+      let numeros = [
+                      {numero: 1, descricao: "um"},
+                      {numero: 2, descricao: "dois"},
+                      {numero: 3, descricao: "tres"},
+                    ];
+
+      let saida = [];
+
+      // for (let i = 0; i < numeros.length; i++) {
+      //   saida.push(numeros[i].numero);
+      // }
+      // console.log(saida);
+
+      saida = numeros.map(function(cadaItemDaLista) {
+        return cadaItemDaLista.numero;
+      });
+      console.log(saida);
+
+      saida = numeros.map((cadaItemDaLista) => {
+        return cadaItemDaLista.numero;
+      });
+      console.log(saida);
+     
+      saida = numeros.map(cadaItemDaLista => {
+        return cadaItemDaLista.numero;
+      });
+      console.log(saida);
+
+      saida = numeros.map(cadaItemDaLista => cadaItemDaLista.numero);
+      console.log(saida);
+
+      // filter
+      let somenteNumeros = [10, 20, 30, 40];
+
+      let maioresOuIgualATrinta = somenteNumeros.filter(cadaItemDaLista => cadaItemDaLista >= 30);
+      console.log(maioresOuIgualATrinta);
+
+      // for (let i = 0; i < somenteNumeros.length; i++) {
+      //   if (somenteNumeros[i] == 10) {
+      //     // push num novo array
+      //   }
+      //   // retorna o array
+      // }
+
+      let somenteDez = somenteNumeros.filter(cadaItemDaLista => cadaItemDaLista == 10);
+      console.log(somenteDez);
+      
+    </script>
+
   </body>
 </html>
