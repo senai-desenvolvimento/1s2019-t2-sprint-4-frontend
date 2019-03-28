@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -82,102 +82,54 @@
     </div>
 
     <script>
+      // let tiposEventos = [
+      //             { "id": 3, "nome": "Linkedin" },
+      //             { "id": 1, "nome": "Outro Evento" },
+      //             { "id": 2, "nome": "Web Design" }
+      //         ];
 
-      // var a = "Fernandinho";
-      // console.log(a);
-      // var a = "Heleninha";
-      // console.log(a);
-      // a = 10;
-      // console.log(a);
+    //   function sucesso() {
+    //     var data = JSON.parse(this.responseText);
+    //     console.log(data);
+    //     preencherDados(data);
+    //   }
 
-      // let a = "Fernandinho";
-      // console.log(a);
-      // // let a = "Heleninha";
-      // a = 10;
-      // console.log(a);
+    //   function erro(err) {
+    //     console.log("Um erro ocorreu: " + err, err);
+    //   }
 
-      // const a = "Fernandinho";
-      // console.log(a);
-      // a = "Helena";
-      // console.log(a);
+    //   var xhr = new XMLHttpRequest();
+    //   xhr.onload = sucesso; // sucesso
+    //   xhr.onerror = erro; // erro
+    //   xhr.open("GET", "http://192.168.4.112:5000/api/tiposeventos");
+    //   xhr.send();
 
-      // let, const
+    const URL = 'http://192.168.4.112:5000/api/tiposeventos';
 
-      // let tiposEventos = ["Evento A", "Evento C", "Evento B"];
+    //Como default é GET, não precisa informar o GET na chamada
+    fetch(URL, { method : 'GET' })
+    .then(resposta => resposta.json()) //Pega a resposta da api
+    .then(data => preencherDados(data)) //Pega os dados da resposta e chama a função para criar tabela
+    .catch(erro => console.log('Erro Tipos Eventos', erro)); //Ocorreu um erro
 
-      // console.log(tiposEventos[1]);
-      // console.log(tiposEventos.length);
+      let tabela = document.querySelector("#tabela-lista-corpo");
 
-      // for (let i = 0; i < tiposEventos.length; i++) {
-      //   console.log(tiposEventos[i]);
-      // }
-
-      // Evento A - Evento B - Evento C
-      // console.log(tiposEventos.join(" - "));
-      // console.log(tiposEventos.sort());
-      // console.log(tiposEventos.sort().reverse());
-      // console.log(tiposEventos.reverse());
-      // console.log(tiposEventos.sort().reverse().join(" | "));
-      
-      // tiposEventos.push("Evento D");
-      // console.log(tiposEventos);
-
-      // tiposEventos.pop();
-      // console.log(tiposEventos);
-
-      // filter, map, reduce
-
-      // let numeros = [
-      //               {numero: 1, descricao: "um"}
-      //             , {numero: 2, descricao: "dois"}
-      //             , {numero: 3, descricao: "tres"}
-      //             ];
-      
-      // // [ 1, 2, 3 ]
-      // let saida = [];
-      
-      // for (let i = 0; i < numeros.length; i++) {
-      //   saida.push(numeros[i].numero);
-      // }
-      // console.log(saida);
-
-      // saida = numeros.map(function(cadaItemDaLista) {
-      //   return cadaItemDaLista.numero
-      // });
-      // console.log(saida);
-
-      // saida = numeros.map((cadaItemDaLista) => {
-      //   return cadaItemDaLista.numero
-      // });
-      // console.log(saida);
-     
-      // saida = numeros.map(cadaItemDaLista => {
-      //   return cadaItemDaLista.numero
-      // });
-      // console.log(saida);
-
-      // saida = numeros.map(cadaItemDaLista => cadaItemDaLista.numero);
-      // console.log(saida);
-
-      // let numeros = [10, 20, 30, 40];
-
-      // numeros.forEach(element => {
-      //   console.log(element);
-      // });
-
-      // let resultado = numeros.filter(cadaNumeroDaLista => cadaNumeroDaLista >= 30);
-      // console.log(resultado);
-
-      // // for - if
-      // let resultadoTop = numeros.filter(numeroTop => numeroTop == 10);
-      // console.log(resultadoTop);
-
-      let a = "10";
-      let b = 10;
-      console.log(a == b);
-      console.log(a === b);
+      function preencherDados(tiposEventos) {
+        tiposEventos.forEach(element => {
+          // criar uma linha
+          let novaLinha = document.createElement("tr");
+          // crio a coluna
+          let colunaId = document.createElement("td");
+          // atribuo um valor a coluna
+          colunaId.innerText = element.id;
+          let colunaNome = document.createElement("td");
+          colunaNome.innerText = element.nome;
+          novaLinha.appendChild(colunaId);
+          novaLinha.appendChild(colunaNome);
+          tabela.appendChild(novaLinha);
+        });
+      }
 
     </script>
-
   </body>
 </html>
