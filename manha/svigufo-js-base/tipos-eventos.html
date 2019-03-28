@@ -115,22 +115,29 @@
       // });
 
       // criar as funções
-      function sucesso() {
-        var data = JSON.parse(this.responseText);
-        console.log(data);
-        preencherTabela(data);
-      }
+      // function sucesso() {
+      //   var data = JSON.parse(this.responseText);
+      //   console.log(data);
+      //   preencherTabela(data);
+      // }
 
-      function erro(err) {
-        console.log("Ocorreu um erro: ", err);
-      }
+      // function erro(err) {
+      //   console.log("Ocorreu um erro: ", err);
+      // }
 
-      var xhr = new XMLHttpRequest();
-      xhr.onload = sucesso; // sucesso
-      xhr.onerror = erro; // erro
-      // url + verbo + envio da requisição - início
-      xhr.open("GET", "http://192.168.4.112:5000/api/tiposeventos");
-      xhr.send();
+      // var xhr = new XMLHttpRequest();
+      // xhr.onload = sucesso; // sucesso
+      // xhr.onerror = erro; // erro
+      // // url + verbo + envio da requisição - início
+      // xhr.open("GET", "http://192.168.4.112:5000/api/tiposeventos");
+      // xhr.send();
+
+      const URL = "http://192.168.4.112:5000/api/tiposeventos";
+
+      fetch(URL)
+        .then(resposta => resposta.json())
+        .then(data => preencherTabela(data))
+        .catch(erro => console.error('error', erro));
 
       let tabela = document.querySelector("#tabela-lista-corpo");
 
