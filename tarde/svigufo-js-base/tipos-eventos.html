@@ -54,7 +54,7 @@
             <h2 class="conteudoPrincipal-cadastro-titulo">
               Cadastrar Tipo de Evento
             </h2>
-            <form>
+            <form method="POST" id="form">
               <div class="container">
                 <input
                   type="text"
@@ -106,15 +106,41 @@
 
     const URL = 'http://192.168.4.112:5000/api/tiposeventos';
 
-    //Como default é GET, não precisa informar o GET na chamada
-    fetch(URL, { method : 'GET' })
-    .then(resposta => resposta.json()) //Pega a resposta da api
-    .then(data => preencherDados(data)) //Pega os dados da resposta e chama a função para criar tabela
-    .catch(erro => console.log('Erro Tipos Eventos', erro)); //Ocorreu um erro
+    function carregaListaTiposEventos(){
+      //Como default é GET, não precisa informar o GET na chamada
+      fetch(URL, { method : 'GET' })
+      .then(resposta => resposta.json()) //Pega a resposta da api
+      .then(data => preencherDados(data)) //Pega os dados da resposta e chama a função para criar tabela
+      .catch(erro => console.log('Erro Tipos Eventos', erro)); //Ocorreu um erro
+    }
 
-      let tabela = document.querySelector("#tabela-lista-corpo");
+    carregaListaTiposEventos();
 
-      function preencherDados(tiposEventos) {
+
+    let tabela = document.querySelector("#tabela-lista-corpo");
+    let form = document.querySelector("#form");
+    
+    form.addEventListener("submit", function(event){
+      event.preventDefault();
+
+      let tipoEvento = {
+        nome : document.querySelector("#nome-tipo-evento").value
+      }
+
+      fetch(URL, {
+        method : 'POST',
+        body : JSON.stringify(tipoEvento),
+        headers : {
+          "Content-Type" : "application/json"
+        }
+      })
+      .then(resposta => console.log(resposta))
+      .then(data => carregaListaTiposEventos())
+      .catch(erro => console.log(erro))
+    });
+
+    function preencherDados(tiposEventos) {
+        tabela.innerText = "";
         tiposEventos.forEach(element => {
           // criar uma linha
           let novaLinha = document.createElement("tr");

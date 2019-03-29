@@ -54,7 +54,7 @@
             <h2 class="conteudoPrincipal-cadastro-titulo">
               Cadastrar Tipo de Evento
             </h2>
-            <form>
+            <form method="POST" id="form">
               <div class="container">
                 <input
                   type="text"
@@ -133,15 +133,12 @@
       // xhr.send();
 
       const URL = "http://192.168.4.112:5000/api/tiposeventos";
-
-      fetch(URL)
-        .then(resposta => resposta.json())
-        .then(data => preencherTabela(data))
-        .catch(erro => console.error('error', erro));
-
       let tabela = document.querySelector("#tabela-lista-corpo");
 
+      
+
       function preencherTabela(tiposEventos) {
+        tabela.innerText = "";
         tiposEventos.forEach(element => {
           let novaLinha = document.createElement("tr");
           let colunaId = document.createElement("td");
@@ -153,6 +150,27 @@
           tabela.appendChild(novaLinha);
         });
       }
+    
+      let form = document.querySelector("#form");
+
+      form.addEventListener("submit", function(event){
+        event.preventDefault();
+
+        let objetoTipoEvento = {
+          nome : document.querySelector("#nome-tipo-evento").value
+        }
+
+        fetch(URL, {
+            method : "POST",
+            body : JSON.stringify(objetoTipoEvento),
+            headers : {
+              "Content-Type" : "application/json"
+            }
+          })
+          .then(resposta => console.log(resposta))
+          .then(data => carregalistatiposeventos())
+          .catch(erro => console.log(erro));
+      })
     </script>
   </body>
 </html>

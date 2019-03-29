@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jogos</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="./assets/css/flexbox.css" />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- Fontes -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+</head>
+
+<body>
+
+    <div>
+            <table id="tabela-lista">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nome</th>
+                  <th>Descrição</th>
+                  <th>Imagem</th>
+                  <th>Estúdio</th>
+                </tr>
+              </thead>
+
+              <tbody id="tabela-lista-corpo"></tbody>
+            </table>
+         
+          <div class="container" id="conteudoPrincipal-cadastro">
+            <h2 class="conteudoPrincipal-cadastro-titulo">
+              Cadastrar Jogos
+            </h2>
+            <form method="POST" id="form">
+              <div class="container">
+                <select id="estudios"></select>
+                <input
+                  type="text"
+                  id="nome-jogo"
+                  placeholder="Informe o nome do jogo"
+                />
+                <input
+                  type="text"
+                  id="urlimagem"
+                  placeholder="Informe a url da imagem"
+                />
+                <textarea
+                  type="text"
+                  id="descricao"
+                  placeholder="Informe a Descrição do jogo"
+                ></textarea>
+                
+                <button
+                  class="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro"
+                >
+                  Cadastrar
+                </button>
+              </div>
+            </form>
+          </div>
+    </div>
+
+    <script>
+    </script>
+</body>
+
+</html>
