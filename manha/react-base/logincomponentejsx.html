@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+    
+      class Login extends React.Component {
+    
+        validaEmail(event){
+            event.preventDefault();
+            let email = document.querySelector('#email').value;
+
+            if(email == 'admin@admin.com'){
+                alert('sucesso');
+            } else {
+                alert('Email errado');
+            }
+        }
+
+        render() {
+          return (
+            <form onSubmit={this.validaEmail}>
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" name="email" required />
+
+              <label htmlFor="password">Senha</label>
+              <input type="password" id="password" name="password" required />
+
+              <button type="submit">Entrar</button>
+            </form>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <div>
+            {/* Chamada do componente Login na tela */} 
+            <Login />
+        </div>,
+        document.querySelector("#app")
+      )
+    </script>
+  </body>
+</html>
