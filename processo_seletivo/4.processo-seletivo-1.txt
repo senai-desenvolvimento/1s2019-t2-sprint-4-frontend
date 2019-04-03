@@ -1,0 +1,19 @@
+Olá, desenvolvedor(a) fera que chegou para realizar o nosso mega desafio! Você foi convocado por ordem suprema a desenvolver a atividade proposta abaixo:
+Você deverá construir uma interface visual para que, ao usuário inserir um nome de usuário do github, por exemplo, 'hstrada', você deverá mostrar uma lista com as informações dos repositórios conforme especificado abaixo:
+
+id;
+o nome (name) do repositório;
+a descrição do repositório;
+a data de criação;
+o tamanho (size) do repositório;
+
+O desafio é mostrar somente os 10 registros mais recentes do usuário digitado. Ao invés de mostrar todos os repositórios (mas tudo bem se você realizar esta parte, consideraremos o seu avanço).
+https://api.github.com/
+https://api.github.com/users/{user}/repos
+
+E olha só, você deverá fazer isto, preferencialmente utilizando React. Caso precise de referência e/ou conteúdo, deixamos um link aqui: https://reactjs.org/
+
+Nós queremos um layout lindão! Sabemos que você é totalmente capaz de desenvolver as atividades propostas.
+
+helena.souza@sp.senai.br
+fernando.guerra@sp.senai.br
