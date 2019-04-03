@@ -13,7 +13,7 @@ class App extends Component {
       <div>
         <header className="cabecalhoPrincipal">
           <div className="container">
-            <img src={logo} />
+            <img src={logo}   alt="SviGufo"  />
 
             <nav className="cabecalhoPrincipal-nav">
               <a>Home</a>

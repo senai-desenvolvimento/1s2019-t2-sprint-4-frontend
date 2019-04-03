@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import Rodape from '../../components/Rodape/Rodape';
+import axios from 'axios'; //https://github.com/axios/axios
+
+import logo from '../../assets/img/icon-login.png'
 
 class TiposEventos extends Component {
   constructor(){
@@ -10,31 +13,50 @@ class TiposEventos extends Component {
       }
 
       this.atualizaEstadoNomeFormulario = this.atualizaEstadoNome.bind(this);
-
+      
   }
 
   buscarTiposEventos(){
-      fetch('http://localhost:5000/api/tiposeventos')
-        .then(resposta => resposta.json())
-        .then(data => this.setState({ lista : data }))
-        .catch(erro => console.log(erro))
+    axios.get(`http://localhost:5000/api/tiposeventos`)
+      .then(res => {
+        const tiposeventos = res.data;
+        this.setState({ lista : tiposeventos });
+      })
+
+      // fetch('http://localhost:5000/api/tiposeventos',{
+      //   method: 'GET',
+      //   headers : {
+      //     'pragma': 'no-cache',
+      //     'cache-control': 'no-cache'
+      //   }
+      // })
+      //   .then(resposta => resposta.json())
+      //   .then(data => this.setState(prevState => ({ lista : data })))
+      //   .catch(erro => console.log(erro))
   }
 
   atualizaEstadoNome(event){
       this.setState({ nome : event.target.value })
   }
 
-  cadastrarTipoEvento(event){      
-      fetch('http://localhost:5000/api/tiposeventos',{
-          method : 'POST',
-          body : JSON.stringify({ nome : this.state.nome }),
-          headers : {
-            "Content-Type" : "application/json"
-          }
+  cadastrarTipoEvento(event){   
+      event.preventDefault();
+
+      axios.post(`http://localhost:5000/api/tiposeventos`, { nome : this.state.nome })
+      .then(res => {
+        this.buscarTiposEventos()
       })
-      .then(response => response)
-      .then(this.buscarTiposEventos())
-      .catch(erro => console.log(erro))
+
+      // fetch('http://localhost:5000/api/tiposeventos',{
+      //     method : 'POST',
+      //     body : JSON.stringify({ nome : this.state.nome }),
+      //     headers : {
+      //       "Content-Type" : "application/json"
+      //     }
+      // })
+      // .then(response => response)
+      // .then(this.buscarTiposEventos())
+      // .catch(erro => console.log(erro))
   }
 
   componentDidMount(){
@@ -46,7 +68,7 @@ class TiposEventos extends Component {
       <div>
         <header className="cabecalhoPrincipal">
           <div className="container">
-            <img src="./assets/img/icon-login.png" />
+            <img src={logo}  alt="SviGufo" />
 
             <nav className="cabecalhoPrincipal-nav">Administrador</nav>
           </div>
@@ -92,7 +114,10 @@ class TiposEventos extends Component {
                     id="nome-tipo-evento"
                     placeholder="tipo do evento"
                   />
-                  <button className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro">
+                  <button type="submit" className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro">
+                    Cadastrar
+                  </button>
+                  <button onClick={this.cadastrarTipoEvento.bind(this)} className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro">
                     Cadastrar
                   </button>
                 </div>
