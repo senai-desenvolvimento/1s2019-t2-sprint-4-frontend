@@ -1,5 +1,19 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Para executar este projeto é necessário criar as chaves de acesso a api do github.
+
+Acesse [https://github.com/settings/developers](https://github.com/settings/developers), crie um novo app e copie o clientid e o clientsecret e cole nas chamadas da api no Index.js
+
+const urlUsuario =
+      "https://api.github.com/users/" +
+      this.state.username +
+      "?client_id=clientidgithub&client_secret=clientsecretgithub";
+
+const urlRepositorio =
+      "https://api.github.com/users/" +
+      this.state.username +
+      "/repos?client_id=clientidgithub&client_secret=clientsecretgithub";
+
 ## Available Scripts
 
 In the project directory, you can run:
