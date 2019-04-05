@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Usuario from "../../components/usuario";
 import Repositorios from "../../components/repositorios";
+import Config from '../../util/config';
+import Loading from '../../components/loading'
 
 import {
   Container,
@@ -11,6 +13,7 @@ import {
   Row,
   Modal
 } from "react-bootstrap";
+
 import Menu from "../../components/menu";
 import axios from "axios";
 
@@ -37,6 +40,7 @@ class Index extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.setState({ loading: true })
     console.log(this.state.username);
     if (this.state.username == "") {
       this.setState({
@@ -50,15 +54,9 @@ class Index extends Component {
       return;
     }
 
-    const urlUsuario =
-      "https://api.github.com/users/" +
-      this.state.username +
-      "?client_id=clientidgithub&client_secret=clientsecretgithub";
+    const urlUsuario = Config.url + this.state.username + "?clientid=" + Config.tokenclientid + "&clientsecret=" + Config.tokenclientsecret;
 
-    const urlRepositorio =
-      "https://api.github.com/users/" +
-      this.state.username +
-      "/repos?client_id=clientidgithub&client_secret=clientsecretgithub";
+    const urlRepositorio =  Config.url + this.state.username + "/repos?clientid=" + Config.tokenclientid + "&clientsecret=" + Config.tokenclientsecret;
 
     axios
       .get(urlUsuario)
@@ -72,7 +70,9 @@ class Index extends Component {
           showModal: true,
           username: "",
           dadosusuario: null,
-          repositorios: []
+          repositorios: [],
+          loading : false,
+          loadingmessage : 'Buscando GitHub'
         });
         return;
       });
@@ -83,6 +83,8 @@ class Index extends Component {
         this.setState({ repositorios: resposta.data });
       })
       .catch(erro => console.log(erro));
+    
+    this.setState({ loading: false })
   }
 
   handleChange(event) {
@@ -90,12 +92,16 @@ class Index extends Component {
   }
 
   render() {
+    const { loading } = this.state.loading;
+    const { loadingmessage } = this.state.loadingmessage;
+
     return (
       <div>
         <Menu />
         <br />
         <br />
         <Container>
+          <Loading loading={loading} message={loadingmessage} />
           <Form noValidate onSubmit={e => this.handleSubmit(e)}>
             <Form.Row>
               <FormGroup>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
 
 import logo from "../../assets/img/icon-login.png";
 
@@ -20,9 +21,9 @@ class App extends Component {
               <a>Home</a>
               <a>Eventos</a>
               <a>Contato</a>
-              <a className="cabecalhoPrincipal-nav-login" href="login.html">
+              <Link className="cabecalhoPrincipal-nav-login" to="/login">
                 Login
-              </a>
+              </Link>
             </nav>
           </div>
         </header>

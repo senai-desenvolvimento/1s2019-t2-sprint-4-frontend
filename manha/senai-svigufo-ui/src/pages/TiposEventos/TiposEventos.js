@@ -6,6 +6,7 @@ import "../../assets/css/flexbox.css";
 import "../../assets/css/reset.css";
 import "../../assets/css/style.css";
 
+import Titulo from '../../components/Titulo';
 import Rodape from "../../components/Rodape/Rodape";
 
 class TiposEventos extends Component {
@@ -13,7 +14,8 @@ class TiposEventos extends Component {
       super();
       this.state = {
         lista : [],
-        nome: ""
+        nome: "",
+        tituloPagina : "Lista Tipos Eventos"
       }
 
       this.atualizaEstadoNome = this.atualizaEstadoNome.bind(this);
@@ -64,9 +66,10 @@ class TiposEventos extends Component {
 
         <main className="conteudoPrincipal">
           <section className="conteudoPrincipal-cadastro">
-            <h1 className="conteudoPrincipal-cadastro-titulo">
+            {/* <h1 className="conteudoPrincipal-cadastro-titulo">
               Tipos de Eventos
-            </h1>
+            </h1> */}
+            <Titulo titulo={this.state.tituloPagina} />
             <div className="container" id="conteudoPrincipal-lista">
               <table id="tabela-lista">
                 <thead>
@@ -92,9 +95,10 @@ class TiposEventos extends Component {
             </div>
 
             <div className="container" id="conteudoPrincipal-cadastro">
-              <h2 className="conteudoPrincipal-cadastro-titulo">
+              {/* <h1 className="conteudoPrincipal-cadastro-titulo">
                 Cadastrar Tipo de Evento
-              </h2>
+              </h1> */}
+              <Titulo titulo="Cadastro Tipos de Eventos" />
               <form onSubmit={this.cadastraTipoEvento}>
                 <div className="container">
                   <input
