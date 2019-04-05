@@ -10,9 +10,8 @@ import Login from './pages/Login/Login';
 import * as serviceWorker from "./serviceWorker";
 import {usuarioAutenticado} from "./services/auth";
 
-const Permissao = ( {component : Component}, {...rest} ) => (
+const Permissao = ( {component : Component} ) => (
   <Route
-    {...rest}
     render = {props => usuarioAutenticado() ? 
       (<Component {...props} /> ) :
       (<Redirect to={{ pathname : "/login" }} />)

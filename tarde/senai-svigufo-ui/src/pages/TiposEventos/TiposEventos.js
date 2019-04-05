@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Rodape from '../../components/Rodape/Rodape';
 import axios from 'axios'; //https://github.com/axios/axios
+import Titulo from '../../components/Titulo';
 
 import logo from '../../assets/img/icon-login.png'
 
@@ -9,7 +10,8 @@ class TiposEventos extends Component {
       super();
       this.state = {
           lista : [],
-          nome : ""
+          nome : "",
+          tituloMensagem : "Olá, Tipos Eventos"
       }
 
       this.atualizaEstadoNomeFormulario = this.atualizaEstadoNome.bind(this);
@@ -76,7 +78,10 @@ class TiposEventos extends Component {
 
         <main className="conteudoPrincipal">
           <section className="conteudoPrincipal-cadastro">
-            <h1 className="conteudoPrincipal-cadastro-titulo">Tipos de Eventos</h1>
+            {/* <h1 className="conteudoPrincipal-cadastro-titulo">
+                Tipos de Eventos
+            </h1> */}
+            <Titulo mensagem={ this.state.tituloMensagem } />
             <div className="container" id="conteudoPrincipal-lista">
               <table id="tabela-lista">
                 <thead>
@@ -102,9 +107,10 @@ class TiposEventos extends Component {
             </div>
 
             <div className="container" id="conteudoPrincipal-cadastro">
-              <h2 className="conteudoPrincipal-cadastro-titulo">
+              {/* <h1 className="conteudoPrincipal-cadastro-titulo">
                 Cadastrar Tipo de Evento
-              </h2>
+              </h1> */}
+              <Titulo mensagem="Cadastrar Tipo Evento" />
               <form onSubmit={this.cadastrarTipoEvento.bind(this)}>
                 <div className="container">
                   <input

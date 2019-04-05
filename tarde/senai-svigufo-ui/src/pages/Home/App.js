@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import logo from "../../assets/img/icon-login.png";
+import { Link } from "react-router-dom";
 
 import "../../assets/css/flexbox.css";
 import "../../assets/css/reset.css";
@@ -13,15 +14,15 @@ class App extends Component {
       <div>
         <header className="cabecalhoPrincipal">
           <div className="container">
-            <img src={logo}   alt="SviGufo"  />
+            <img src={logo} alt="SviGufo" />
 
             <nav className="cabecalhoPrincipal-nav">
               <a>Home</a>
               <a>Eventos</a>
               <a>Contato</a>
-              <a className="cabecalhoPrincipal-nav-login" href="login.html">
+              <Link className="cabecalhoPrincipal-nav-login" to="/login">
                 Login
-              </a>
+              </Link>
             </nav>
           </div>
         </header>
