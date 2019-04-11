@@ -5,6 +5,8 @@ import "./index.css";
 import App from "./pages/Home/App";
 import TiposEventos from "./pages/TiposEventos/TiposEventos";
 import NaoEncontrada from "./pages/NaoEncontrada/NaoEncontrada";
+import CadastroEvento from './pages/Eventos/Cadastro';
+
 import Login from './pages/Login/Login';
 
 import * as serviceWorker from "./serviceWorker";
@@ -26,6 +28,7 @@ const routing = (
         <Route exact path="/" component={App} />
         <Permissao  path="/tiposeventos" component={TiposEventos} />
         <Route path="/login" component={Login} />        
+        <Route path="/eventos" component={CadastroEvento} />
         <Route component={NaoEncontrada} />
       </Switch>
     </div>
