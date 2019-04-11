@@ -5,6 +5,7 @@ import App from './pages/Home/App';
 import TiposEventos from './pages/TiposEventos/TiposEventos';
 import NaoEncontrada from './pages/NaoEncontrada/NaoEncontrada';
 import Login from './pages/Login/Login';
+import CadastroEvento from './pages/Eventos/Eventos';
 import { usuarioAutenticado } from './services/auth';
 
 import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
@@ -26,6 +27,7 @@ const rotas = (
                 <Route exact path="/" component={App} />
                 <Permissao path="/tiposeventos" component={TiposEventos} />
                 <Route path="/login" component={Login} />
+                <Route path="/eventos" component={CadastroEvento} />
                 <Route component={NaoEncontrada} />
             </Switch>
         </div>
