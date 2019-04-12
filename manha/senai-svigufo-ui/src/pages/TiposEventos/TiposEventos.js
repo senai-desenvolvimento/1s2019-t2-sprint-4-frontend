@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import Header from '../../components/Cabecalho';
 
-import logo from "../../assets/img/icon-login.png";
 
 import "../../assets/css/flexbox.css";
 import "../../assets/css/reset.css";
@@ -56,13 +56,7 @@ class TiposEventos extends Component {
   render() {
     return (
       <div>
-        <header className="cabecalhoPrincipal">
-          <div className="container">
-            <img src={logo} />
-
-            <nav className="cabecalhoPrincipal-nav">Administrador</nav>
-          </div>
-        </header>
+        <Header />
 
         <main className="conteudoPrincipal">
           <section className="conteudoPrincipal-cadastro">

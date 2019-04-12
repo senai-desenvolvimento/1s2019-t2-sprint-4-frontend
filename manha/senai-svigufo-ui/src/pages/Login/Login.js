@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-
+import {parseJwt} from '../../services/auth';
+import {Link} from 'react-router-dom';
 
 import logo from '../../assets/img/icon-login.png';
 
-// import '../../assets/css/login.css';
+import '../../assets/css/login.css';
 import Axios from "axios";
 
 class Login extends Component {
@@ -38,7 +39,14 @@ class Login extends Component {
             if(data.status === 200){
                 console.log(data);
                 localStorage.setItem("usuario-svigufo", data.data.token);
-                this.props.history.push("/tiposeventos");
+                //Verifica o tipo de usuário e redireciona para a página default
+                console.log(parseJwt().Role);
+                if(parseJwt().Role == "ADMINISTRADOR"){
+                  this.props.history.push("/eventos/cadastrar");
+                } else {
+                  this.props.history.push("/eventos");
+                }
+                
             } 
         })
         .catch(erro => {
@@ -56,7 +64,9 @@ class Login extends Component {
         <div className="item__login">
           <div className="row">
             <div className="item">
-              <img src={logo} className="icone__login" />
+              <Link to="/">
+                <img src={logo} className="icone__login" alt="SviGufo" />
+              </Link>
             </div>
             <div className="item" id="item__title">
               <p className="text__login" id="item__description">
