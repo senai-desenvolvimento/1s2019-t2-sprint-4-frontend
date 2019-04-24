@@ -1,31 +1,20 @@
 import React, { Component } from "react";
-import logo from "../../assets/img/icon-login.png";
-import { Link } from "react-router-dom";
+
 
 import "../../assets/css/flexbox.css";
 import "../../assets/css/reset.css";
 import "../../assets/css/style.css";
 
-import Rodape from "../../components/Rodape/Rodape";
+import Rodape from '../../components/Rodape/Rodape';
+import Cabecalho from '../../components/Cabecalho';
+
 
 class App extends Component {
+
   render() {
     return (
       <div>
-        <header className="cabecalhoPrincipal">
-          <div className="container">
-            <img src={logo} alt="SviGufo" />
-
-            <nav className="cabecalhoPrincipal-nav">
-              <a>Home</a>
-              <a>Eventos</a>
-              <a>Contato</a>
-              <Link className="cabecalhoPrincipal-nav-login" to="/login">
-                Login
-              </Link>
-            </nav>
-          </div>
-        </header>
+        <Cabecalho />
 
         <section className="conteudoImagem">
           <div>
@@ -103,6 +92,14 @@ class App extends Component {
             </div>
           </section>
         </main>
+
+        {/* <footer className="rodapePrincipal">
+          <section className="rodapePrincipal-patrocinadores">
+            <div className="container">
+              <p>Escola SENAI de Informática - 2019</p>
+            </div>
+          </section>
+        </footer> */}
 
         <Rodape />
       </div>

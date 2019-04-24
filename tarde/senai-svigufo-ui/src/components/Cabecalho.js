@@ -4,6 +4,8 @@ import NavBar from '../components/NavBar';
 //withRouter para redirecionar as rotas
 import {Link, withRouter} from 'react-router-dom';
 
+import {usuarioAutenticado} from '../services/auth';
+
 import logo from "../assets/img/icon-login.png";
 
 class Cabecalho extends Component {

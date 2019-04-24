@@ -13,23 +13,20 @@ class Login extends Component {
         this.state = {
             email : '',
             senha : '',
-            erroMensagem : ''
+            erroMensagem : '',
+            isLoading: false
         }
         
     }
 
-    atualizaEstadoEmail(event){
-        this.setState({ email : event.target.value});
+    atualizaEstadoCampo(event){
+        this.setState({ [event.target.name] : event.target.value});
     }
 
-    atualizaEstadoSenha(event){
-        this.setState({ senha : event.target.value});
-    }
 
     efetuaLogin(event){
         event.preventDefault();
-        
-        // alert(this.state.email + " - " + this.state.senha);
+        this.setState({ isLoading: true });
 
         Axios.post("http://192.168.4.112:5000/api/login", {
            email : this.state.email,
@@ -37,11 +34,10 @@ class Login extends Component {
         })
         .then(data => {
             if(data.status === 200){
-                console.log(data);
                 localStorage.setItem("usuario-svigufo", data.data.token);
                 //Verifica o tipo de usuário e redireciona para a página default
                 console.log(parseJwt().Role);
-                if(parseJwt().Role == "ADMINISTRADOR"){
+                if(parseJwt().Role === "ADMINISTRADOR"){
                   this.props.history.push("/eventos/cadastrar");
                 } else {
                   this.props.history.push("/eventos");
@@ -50,6 +46,7 @@ class Login extends Component {
             } 
         })
         .catch(erro => {
+            this.setState({ isLoading: false });
             this.setState({ erroMensagem : 'Email ou senha inválido'});
         })
     }
@@ -77,29 +74,29 @@ class Login extends Component {
               <div className="item">
                 <input
                   className="input__login"
-                  placeholder="username"
+                  placeholder="Informe seu e-mail"
                   type="text"
                   value={this.state.email}
-                  onChange={this.atualizaEstadoEmail.bind(this)}
-                  name="username"
+                  onChange={this.atualizaEstadoCampo.bind(this)}
+                  name="email"
                   id="login__email"
                 />
               </div>
               <div className="item">
                 <input
                   className="input__login"
-                  placeholder="password"
+                  placeholder="senha"
                   value={this.state.senha}
-                  onChange={this.atualizaEstadoSenha.bind(this)}
+                  onChange={this.atualizaEstadoCampo.bind(this)}
                   type="password"
-                  name="password"
+                  name="senha"
                   id="login__password"
                 />
               </div>
               <p className="text__login" style={{ color : 'red',  textAlign : 'center' }}>{this.state.erroMensagem}</p>
               <div className="item">
-                <button type="submit" className="btn btn__login" id="btn__login">
-                  Login
+                <button type="submit" className="btn btn__login" id="btn__login" {...this.state.isLoading ? "disabled" : ""}>
+                {this.state.isLoading ? "Loading..." : "Login"}
                 </button>
               </div>
             </form>

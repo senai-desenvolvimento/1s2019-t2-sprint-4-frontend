@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-function Rodape(){
-    return (
+function Rodape() {
+    return(
         <footer className="rodapePrincipal">
           <section className="rodapePrincipal-patrocinadores">
             <div className="container">

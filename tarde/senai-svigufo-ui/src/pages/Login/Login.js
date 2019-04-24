@@ -1,28 +1,29 @@
 import React, { Component } from "react";
+import {parseJwt} from '../../services/auth';
+import {Link} from 'react-router-dom';
 
+import logo from '../../assets/img/icon-login.png';
 
-// import '../../assets/css/login.css';
-
-import logo from '../../assets/img/icon-login.png'
+import '../../assets/css/login.css';
 import Axios from "axios";
 
-
-export default class Login extends Component {
+class Login extends Component {
     constructor(){
         super();
-
-        this.state ={
+        this.state = {
             email : '',
-            senha : ''
+            senha : '',
+            erroMensagem : ''
         }
+        
     }
 
     atualizaEstadoEmail(event){
-        this.setState({email : event.target.value});
+        this.setState({ email : event.target.value});
     }
 
     atualizaEstadoSenha(event){
-        this.setState({senha : event.target.value});
+        this.setState({ senha : event.target.value});
     }
 
     efetuaLogin(event){
@@ -30,20 +31,27 @@ export default class Login extends Component {
         
         // alert(this.state.email + " - " + this.state.senha);
 
-        Axios.post('http://192.168.4.112:5000/api/login', {
-            email : this.state.email,
-            senha: this.state.senha
+        Axios.post("http://192.168.4.112:5000/api/login", {
+           email : this.state.email,
+           senha: this.state.senha
         })
         .then(data => {
-            localStorage.setItem("usuario-svigufo", data.data.token);
-            this.props.history.push('/tiposeventos');
-            console.log(data);
+            if(data.status === 200){
+                console.log(data);
+                localStorage.setItem("usuario-svigufo", data.data.token);
+                //Verifica o tipo de usuário e redireciona para a página default
+                console.log(parseJwt().Role);
+                if(parseJwt().Role == "ADMINISTRADOR"){
+                  this.props.history.push("/eventos/cadastrar");
+                } else {
+                  this.props.history.push("/eventos");
+                }
+                
+            } 
         })
         .catch(erro => {
-            console.log(erro);
+            this.setState({ erroMensagem : 'Email ou senha inválido'});
         })
-
-        
     }
 
   render() {
@@ -56,7 +64,9 @@ export default class Login extends Component {
         <div className="item__login">
           <div className="row">
             <div className="item">
-              <img src={logo} className="icone__login" />
+              <Link to="/">
+                <img src={logo} className="icone__login" alt="SviGufo" />
+              </Link>
             </div>
             <div className="item" id="item__title">
               <p className="text__login" id="item__description">
@@ -67,11 +77,11 @@ export default class Login extends Component {
               <div className="item">
                 <input
                   className="input__login"
-                  placeholder="email"
+                  placeholder="username"
                   type="text"
                   value={this.state.email}
                   onChange={this.atualizaEstadoEmail.bind(this)}
-                  name="email"
+                  name="username"
                   id="login__email"
                 />
               </div>
@@ -86,6 +96,7 @@ export default class Login extends Component {
                   id="login__password"
                 />
               </div>
+              <p className="text__login" style={{ color : 'red',  textAlign : 'center' }}>{this.state.erroMensagem}</p>
               <div className="item">
                 <button type="submit" className="btn btn__login" id="btn__login">
                   Login
@@ -98,3 +109,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default Login;

@@ -26,6 +26,12 @@
   flex-wrap: wrap;
 }
 
+.conteudoPrincipal-dados .titulo-tipo-evento{
+  text-align: right;
+  margin-right: 5px;
+}
+
+
 .conteudoPrincipal-dados-link {
   width: 23%;
   margin: 1%;

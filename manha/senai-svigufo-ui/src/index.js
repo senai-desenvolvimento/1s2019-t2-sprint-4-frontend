@@ -23,7 +23,7 @@ import {parseJwt} from './services/auth';
 const PermissaoAdmin = ({ component: Component }) => (
   <Route
     render={props =>
-      usuarioAutenticado() && parseJwt().Role == "ADMINISTRADOR" ? (
+      usuarioAutenticado() && parseJwt().Role === "ADMINISTRADOR" ? (
         <Component {...props} />
       ) : (
         <Redirect to={{ pathname: "/login" }} />
@@ -36,7 +36,7 @@ const PermissaoAdmin = ({ component: Component }) => (
 const PermissaoComum = ({ component: Component }) => (
   <Route
     render={props =>
-      usuarioAutenticado() && parseJwt().Role == "COMUM" ? (
+      usuarioAutenticado() && parseJwt().Role === "COMUM" ? (
         <Component {...props} />
       ) : (
         <Redirect to={{ pathname: "/login" }} />

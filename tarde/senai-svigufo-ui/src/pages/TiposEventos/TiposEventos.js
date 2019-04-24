@@ -1,87 +1,69 @@
 import React, { Component } from "react";
-import Rodape from '../../components/Rodape/Rodape';
-import axios from 'axios'; //https://github.com/axios/axios
-import Titulo from '../../components/Titulo';
+import Header from '../../components/Cabecalho';
 
-import logo from '../../assets/img/icon-login.png'
+
+import "../../assets/css/flexbox.css";
+import "../../assets/css/reset.css";
+import "../../assets/css/style.css";
+
+import Titulo from '../../components/Titulo';
+import Rodape from "../../components/Rodape/Rodape";
 
 class TiposEventos extends Component {
   constructor(){
       super();
       this.state = {
-          lista : [],
-          nome : "",
-          tituloMensagem : "Olá, Tipos Eventos"
+        lista : [],
+        nome: "",
+        tituloPagina : "Lista Tipos Eventos"
       }
 
-      this.atualizaEstadoNomeFormulario = this.atualizaEstadoNome.bind(this);
-      
+      this.atualizaEstadoNome = this.atualizaEstadoNome.bind(this);
+      this.cadastraTipoEvento = this.cadastraTipoEvento.bind(this);
   }
 
   buscarTiposEventos(){
-    axios.get(`http://localhost:5000/api/tiposeventos`)
-      .then(res => {
-        const tiposeventos = res.data;
-        this.setState({ lista : tiposeventos });
-      })
-
-      // fetch('http://localhost:5000/api/tiposeventos',{
-      //   method: 'GET',
-      //   headers : {
-      //     'pragma': 'no-cache',
-      //     'cache-control': 'no-cache'
-      //   }
-      // })
-      //   .then(resposta => resposta.json())
-      //   .then(data => this.setState(prevState => ({ lista : data })))
-      //   .catch(erro => console.log(erro))
-  }
-
-  atualizaEstadoNome(event){
-      this.setState({ nome : event.target.value })
-  }
-
-  cadastrarTipoEvento(event){   
-      event.preventDefault();
-
-      axios.post(`http://localhost:5000/api/tiposeventos`, { nome : this.state.nome })
-      .then(res => {
-        this.buscarTiposEventos()
-      })
-
-      // fetch('http://localhost:5000/api/tiposeventos',{
-      //     method : 'POST',
-      //     body : JSON.stringify({ nome : this.state.nome }),
-      //     headers : {
-      //       "Content-Type" : "application/json"
-      //     }
-      // })
-      // .then(response => response)
-      // .then(this.buscarTiposEventos())
-      // .catch(erro => console.log(erro))
+      fetch('http://192.168.4.112:5000/api/tiposeventos')
+        .then(resposta => resposta.json())
+        .then(data => this.setState({lista : data}))
+        .catch((erro) => console.log(erro))
   }
 
   componentDidMount(){
       this.buscarTiposEventos();
   }
 
+  atualizaEstadoNome(event){
+    this.setState({ nome : event.target.value });
+  }
+
+  cadastraTipoEvento(event){
+    event.preventDefault();
+    
+    fetch('http://192.168.4.112:5000/api/tiposeventos',
+        {
+          method: 'POST',
+          body : JSON.stringify({ nome : this.state.nome }),
+          headers: {
+            "Content-Type" : "application/json"
+          }
+        })
+        .then(resposta => resposta)
+        .then(this.buscarTiposEventos())
+        .catch(erro => console.log(erro))
+  }
+
   render() {
     return (
       <div>
-        <header className="cabecalhoPrincipal">
-          <div className="container">
-            <img src={logo}  alt="SviGufo" />
-
-            <nav className="cabecalhoPrincipal-nav">Administrador</nav>
-          </div>
-        </header>
+        <Header />
 
         <main className="conteudoPrincipal">
           <section className="conteudoPrincipal-cadastro">
             {/* <h1 className="conteudoPrincipal-cadastro-titulo">
-                Tipos de Eventos
+              Tipos de Eventos
             </h1> */}
-            <Titulo mensagem={ this.state.tituloMensagem } />
+            <Titulo titulo={this.state.tituloPagina} />
             <div className="container" id="conteudoPrincipal-lista">
               <table id="tabela-lista">
                 <thead>
@@ -93,14 +75,14 @@ class TiposEventos extends Component {
 
                 <tbody>
                     {
-                       this.state.lista.map(function(tipoevento){
-                           return(
+                        this.state.lista.map(function(tipoevento){
+                            return (
                                 <tr key={tipoevento.id}>
                                     <td>{tipoevento.id}</td>
                                     <td>{tipoevento.nome}</td>
                                 </tr>
-                           );
-                       }) 
+                            );
+                        })
                     }
                 </tbody>
               </table>
@@ -110,20 +92,17 @@ class TiposEventos extends Component {
               {/* <h1 className="conteudoPrincipal-cadastro-titulo">
                 Cadastrar Tipo de Evento
               </h1> */}
-              <Titulo mensagem="Cadastrar Tipo Evento" />
-              <form onSubmit={this.cadastrarTipoEvento.bind(this)}>
+              <Titulo titulo="Cadastro Tipos de Eventos" />
+              <form onSubmit={this.cadastraTipoEvento}>
                 <div className="container">
                   <input
                     type="text"
                     value={this.state.nome}
-                    onChange={this.atualizaEstadoNomeFormulario}
+                    onChange={this.atualizaEstadoNome}
                     id="nome-tipo-evento"
                     placeholder="tipo do evento"
                   />
-                  <button type="submit" className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro">
-                    Cadastrar
-                  </button>
-                  <button onClick={this.cadastrarTipoEvento.bind(this)} className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro">
+                  <button className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro">
                     Cadastrar
                   </button>
                 </div>
@@ -131,6 +110,14 @@ class TiposEventos extends Component {
             </div>
           </section>
         </main>
+
+        {/* <footer className="rodapePrincipal">
+          <section className="rodapePrincipal-patrocinadores">
+            <div className="container">
+              <p>Escola SENAI de Informática - 2019</p>
+            </div>
+          </section>
+        </footer> */}
 
         <Rodape />
       </div>

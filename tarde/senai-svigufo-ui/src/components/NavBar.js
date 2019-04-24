@@ -5,6 +5,10 @@ import { parseJwt, usuarioAutenticado } from "../services/auth";
 import { withRouter, Link } from "react-router-dom";
 
 class NavBar extends Component {
+  constructor() {
+    super();
+  }
+
   logout(event) {
     event.preventDefault();
 

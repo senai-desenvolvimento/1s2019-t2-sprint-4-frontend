@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react'
 
-export default class Titulo extends Component{
-    constructor(props){
-        super(props);
-    }
-
-    render(){
-        return (
-            <h1  className="conteudoPrincipal-cadastro-titulo">
-                {this.props.mensagem}
+class Titulo extends Component{
+    render() {
+        return(
+            <h1 className="conteudoPrincipal-cadastro-titulo">
+              {this.props.titulo}
             </h1>
         );
     }
 }
 
+export default Titulo;
